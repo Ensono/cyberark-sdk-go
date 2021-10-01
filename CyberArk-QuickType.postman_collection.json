@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "612a072e-b4ed-400e-bf87-d19a63eaf0bc",
+		"name": "CyberArk-QuickType",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Logon - CyberArk Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"CyberArkLogonResult\", jsonData);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"{{apiUsername}}\",\n\t\"password\": \"{{apiPassword}}\",\n\t//\"newPassword\": \"<optional>\",\n\t\"concurrentSession\": \"true\"\n}"
+				},
+				"url": {
+					"raw": "{{BaseURL}}/PasswordVault/API/Auth/CyberArk/Logon",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"PasswordVault",
+						"API",
+						"Auth",
+						"CyberArk",
+						"Logon"
+					]
+				},
+				"description": "This method authenticates a user to the Vault and returns a token that can be used in subsequent web services calls. In addition, this method enables you to set a new password."
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"value": "application/json",
+								"key": "Content-Type",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"{{apiUsername}}\",\n\t\"password\": \"{{apiPassword}}\"\n}"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "CA33333=; path=/PasswordVault/; secure; HttpOnly"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "mobileState=Desktop; path=/PasswordVault/; secure; HttpOnly"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "CA11111=000000028C15398FB1A562CD1D4E91A6FA81FC6A06554E484D00D985DD8ED45237FD32F500000000; path=/PasswordVault/; secure; HttpOnly"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "CA22222=C78EA53FF658A303; path=/PasswordVault/; secure; HttpOnly"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "CA55555=cyberark; path=/PasswordVault/; secure; HttpOnly"
+						},
+						{
+							"key": "X-UA-Compatible",
+							"value": "IE=EmulateIE8"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-FRAME-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "Warning"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Nov 2018 20:50:14 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "182"
+						}
+					],
+					"cookie": [],
+					"body": "\"OTc5NjZlZDUtZDY0YS00N2RmLThiNjYtM2FhMWE5YzMwMWEwO0M3OEVBNTNGRjY1OEEzMDM7MDAwMDAwMDI4QzE1Mzk4RkIxQTU2MkNEMUQ0RTkxQTZGQTgxRkM2QTA2NTU0RTQ4NEQwMEQ5ODVERDhFRDQ1MjM3RkQzMkY1MDAwMDAwMDA7\""
+				}
+			]
+		}
+	]
+}
